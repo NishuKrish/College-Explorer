@@ -44,7 +44,7 @@ export function AnalyticsDashboard() {
       <header className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <Link className="text-sm font-semibold text-primary" href="/">
-            College Exploration
+            Dream Campus
           </Link>
           <h1 className="mt-3 text-3xl font-semibold tracking-normal text-foreground sm:text-4xl">
             Analytics and ranking evaluation

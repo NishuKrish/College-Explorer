@@ -8,8 +8,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "College Exploration Platform",
-    template: "%s | College Exploration Platform",
+    default: "Dream Campus",
+    template: "%s | Dream Campus",
   },
   description:
     "Data-driven decision support for building transparent college shortlists.",

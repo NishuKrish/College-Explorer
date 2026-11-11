@@ -33,7 +33,7 @@ export default function Home() {
         <Link href="/dashboard"><span>02</span><h2>Build your shortlist</h2><p>Keep your favorite schools in one place.</p><ArrowUpRight size={22} /></Link>
         <Link href="/compare"><span>03</span><h2>Compare colleges</h2><p>See costs and outcomes side by side.</p><ArrowUpRight size={22} /></Link>
       </section>
-      <footer className="guide-footer"><span>College Explorer</span><p>Decision support. Not admissions or financial advice.</p></footer>
+      <footer className="guide-footer"><span>Dream Campus</span><p>Decision support. Not admissions or financial advice.</p></footer>
     </main>
   );
 }
