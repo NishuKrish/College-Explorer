@@ -185,10 +185,13 @@ Deploys are manual (`sam deploy`, Vercel's Git integration). A CI deploy job wou
 
 ## Railway (single-project deployment)
 
-The Railway configuration is prepared; no Railway deployment has been verified yet.
-Keep the repository root as the source root for both app services. Select the custom
-config file `/infra/railway/api.json` for the API and `/infra/railway/web.json` for
-Next.js in each service's settings. The Dockerfiles need the full repository context.
+The Railway API and web service settings are configured directly in Railway.
+Config as Code is deprecated by the current Railway API; do not select the legacy
+JSON configuration files under `infra/railway`. Keep the repository root as the
+source root for both app services. Set the API Dockerfile to `apps/api/Dockerfile`
+and the web Dockerfile to `apps/web/Dockerfile`. The builds need the full repository
+context. API healthcheck: `/ready`; web healthcheck: `/`; restart on failure with
+5 retries. Set `PORT=8000` on API and `PORT=3000` on web.
 
 Create four services in one region:
 
@@ -210,16 +213,15 @@ API variables:
 - `CORS_ORIGINS` set to the exact web HTTPS origin; no trailing slash or wildcard.
 - Leave `ANALYTICS_API_TOKEN` unset to keep the analytics summary closed.
 
-The API config runs `alembic upgrade head` before deployment. For the initial empty
-school database, temporarily select `/infra/railway/api-bootstrap.json` as the config file. It runs:
+Set the API pre-deploy command to `alembic upgrade head`. For the initial empty
+school database, temporarily use:
 
 ```sh
 sh -c 'alembic upgrade head && python scripts/seed_database.py --if-empty && python scripts/refresh_embeddings.py'
 ```
 
-After initialization succeeds, select `/infra/railway/api.json` again. Configuration
-files override dashboard command settings, so switch the config file rather than
-editing the command in the dashboard. Never use `--reset`
+After initialization succeeds, restore `alembic upgrade head` in Railway service
+settings. Never use `--reset`
 on the deployed database. Generate an API domain targeting port 8000.
 
 Web variables:
