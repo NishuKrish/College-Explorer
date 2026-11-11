@@ -334,4 +334,4 @@ V3.7 measured performance, now that retrieval is settled and Docker is running.
 
 ## Dream Campus counselor
 
-- [~] Adapt College Navigator interviews under AGPL-3.0; add stateless Groq GPT-OSS counselor, read-only school tools, essay/visit modes, source cards, consent, fail-closed usage limits and generated API contracts. Local backend tests pass; frontend and live deployment verification in progress.
+- [x] Adapt College Navigator interviews under AGPL-3.0; add stateless Groq GPT-OSS counselor, read-only school tools, essay/visit modes, source cards, consent, fail-closed usage limits and generated API contracts. Verified 134 backend tests (7 database tests skipped locally), frontend lint/typecheck/production build, live Groq school-source and synthetic essay responses, Railway healthchecks, and 390px layout without overflow. AI reliability remains a documented limitation.

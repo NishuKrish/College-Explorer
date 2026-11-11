@@ -17,6 +17,14 @@ const modes = [
 ] as const;
 type Mode = typeof modes[number]["id"];
 
+function CounselorText({ text }: { text: string }) {
+  // Render emphasis as React text nodes. Never interpret model HTML or link URLs.
+  return <>{text.split(/(\*\*[^*\n]+\*\*|\*[^*\n]+\*)/g).map((part, index) =>
+    part.startsWith("**") && part.endsWith("**") ? <strong key={index}>{part.slice(2, -2)}</strong> :
+    part.startsWith("*") && part.endsWith("*") ? <em key={index}>{part.slice(1, -1)}</em> : part
+  )}</>;
+}
+
 export function Counselor() {
   const [mode, setMode] = useState<Mode>("plan");
   const [messages, setMessages] = useState<Message[]>([]);
@@ -69,7 +77,7 @@ export function Counselor() {
         <div className="counselor-chat-header"><span>{selected.label}<small>GPT-OSS · via Groq</small></span><button onClick={() => reset()}><RotateCcw size={15}/> New chat</button></div>
         <div className="counselor-transcript" role="log" aria-label="Conversation" aria-live="polite">
           {!messages.length && <div className="counselor-welcome"><span className="counselor-welcome-mark"><selected.icon size={30} strokeWidth={1.4}/></span><h2>{selected.title}</h2><p>{mode === "essay" ? "Add a draft below, then tell me what you want to work on." : "No perfect answers needed. We’ll take it one step at a time."}</p><button className="counselor-starter" onClick={() => setInput(selected.prompt)}>{selected.prompt}<ArrowUp size={17}/></button></div>}
-          {messages.map((message, index) => <article key={index} className={`counselor-message counselor-message-${message.role}`}><p className="counselor-message-label">{message.role === "user" ? "YOU" : "YOUR COUNSELOR"}</p><div className="counselor-message-content">{message.content}</div>{!!message.result?.sources.length && <div className="counselor-sources"><p>School sources</p>{message.result.sources.map(source => /^\/schools\/\d+$/.test(source.url) ? <Link key={source.id} href={source.url} title={source.detail}>[{source.id}] {source.title} ↗</Link> : <span key={source.id}>{source.title}</span>)}</div>}</article>)}
+          {messages.map((message, index) => <article key={index} className={`counselor-message counselor-message-${message.role}`}><p className="counselor-message-label">{message.role === "user" ? "YOU" : "YOUR COUNSELOR"}</p><div className="counselor-message-content">{message.role === "assistant" ? <CounselorText text={message.content}/> : message.content}</div>{!!message.result?.sources.length && <div className="counselor-sources"><p>School sources</p>{message.result.sources.map(source => /^\/schools\/\d+$/.test(source.url) ? <Link key={source.id} href={source.url} title={source.detail}>[{source.id}] {source.title} ↗</Link> : <span key={source.id}>{source.title}</span>)}</div>}</article>)}
           {busy && <p className="counselor-thinking" role="status">Thinking it through<span>…</span></p>}<div ref={end}/>
         </div>
         <form className="counselor-compose" onSubmit={send}>
