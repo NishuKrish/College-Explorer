@@ -130,3 +130,18 @@ def test_route_consent_privacy_and_no_store(client, caplog):
     finally:
         app.dependency_overrides.pop(require_counselor_access, None)
         app.dependency_overrides.pop(get_counselor_service, None)
+
+
+def test_school_name_punctuation_and_aliases():
+    from schemas.schools import SearchResponse, SchoolSearchResult
+    school = SchoolSearchResult(school_id=110662, name="University of California-Los Angeles", city="Los Angeles", state="CA", type="public", setting="city", enrollment=33000)
+    def search(req):
+        matches = [school] if req.query in ("Los Angeles", "angeles") else []
+        return SearchResponse(results=matches, total_results=len(matches), page=1, page_size=req.page_size)
+    tools = CounselorTools(None)
+    tools.schools = SimpleNamespace(search_schools=search)
+    for query in ("UCLA", "University of California Los Angeles"):
+        result = tools.execute("search_colleges", json.dumps({"query": query}))
+        assert result["results"][0]["school_id"] == 110662
+        assert result["results"][0]["source_id"] == "S1"
+    assert len(tools.sources) == 1

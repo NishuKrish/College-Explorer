@@ -1,5 +1,6 @@
 """Bounded counselor: two model calls, three read-only tool calls, no stored chats."""
 import json
+import re
 from pathlib import Path
 
 import httpx
@@ -109,7 +110,22 @@ class CounselorTools:
             result["source_id"] = self._source(profile.school_id, profile.name)
             return result
         if name == "search_colleges":
-            response = self.schools.search_schools(SearchRequest(**args.model_dump(), page_size=3))
+            params = args.model_dump()
+            query = (args.query or "").strip()
+            aliases = {"ucla": "Los Angeles", "usc": "Southern California", "mit": "Massachusetts Institute of Technology", "uc berkeley": "Berkeley"}
+            params["query"] = aliases.get(query.lower(), query) or None
+            response = self.schools.search_schools(SearchRequest(**params, page_size=3))
+            if not response.results and params["query"]:
+                # Names in federal data include punctuation (California-Los Angeles).
+                # Retry by a distinctive token, then require every meaningful name token.
+                tokens = [word for word in re.findall(r"[a-z0-9]+", params["query"].lower())
+                          if word not in {"the", "of", "at", "and", "university", "college", "in"}]
+                if tokens:
+                    params["query"] = tokens[-1]
+                    candidates = self.schools.search_schools(SearchRequest(**params, page_size=50))
+                    matches = [school for school in candidates.results
+                               if set(tokens).issubset(set(re.findall(r"[a-z0-9]+", school.name.lower())))]
+                    response = candidates.model_copy(update={"results": matches[:3], "total_results": len(matches)})
             version = None
         else:
             response = self.ranking.rank_schools(RankingRequest(
