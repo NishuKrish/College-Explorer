@@ -55,6 +55,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/counselor/chat": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Counselor Chat */
+        post: operations["counselor_chat_counselor_chat_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/counselor/status": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Counselor Status */
+        get: operations["counselor_status_counselor_status_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/decision/report": {
         parameters: {
             query?: never;
@@ -375,6 +409,16 @@ export interface components {
             /** Save Rate By Rank Position */
             save_rate_by_rank_position: components["schemas"]["AnalyticsRateRow"][];
         };
+        /** ChatMessage */
+        ChatMessage: {
+            /** Content */
+            content: string;
+            /**
+             * Role
+             * @enum {string}
+             */
+            role: "user" | "assistant";
+        };
         /** CostCalculatorAssumption */
         "CostCalculatorAssumption-Input": {
             /** Annual Loan Amount */
@@ -516,6 +560,66 @@ export interface components {
             warnings: string[];
             /** Yearly Cost Difference */
             yearly_cost_difference: number | null;
+        };
+        /** CounselorRequest */
+        CounselorRequest: {
+            /**
+             * Consent
+             * @constant
+             */
+            consent: true;
+            /**
+             * Essay
+             * @default
+             */
+            essay?: string;
+            /** Messages */
+            messages: components["schemas"]["ChatMessage"][];
+            /**
+             * Mode
+             * @default plan
+             * @enum {string}
+             */
+            mode?: "plan" | "essay" | "visits";
+        };
+        /** CounselorResponse */
+        CounselorResponse: {
+            /** Model */
+            model: string;
+            /** Reply */
+            reply: string;
+            /** Sources */
+            sources: components["schemas"]["CounselorSource"][];
+            /** Tools Used */
+            tools_used: string[];
+        };
+        /** CounselorSource */
+        CounselorSource: {
+            /** Detail */
+            detail: string;
+            /** Id */
+            id: string;
+            /** Title */
+            title: string;
+            /** Url */
+            url: string;
+        };
+        /** CounselorStatus */
+        CounselorStatus: {
+            /** Available */
+            available: boolean;
+            /** Model */
+            model: string;
+            /**
+             * Provider
+             * @default Groq
+             */
+            provider: string;
+            /**
+             * Source Url
+             * @default https://github.com/NishuKrish/College-Explorer
+             */
+            source_url: string;
         };
         /** DecisionCategoryScoreRow */
         DecisionCategoryScoreRow: {
@@ -1697,6 +1801,59 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    counselor_chat_counselor_chat_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CounselorRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CounselorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    counselor_status_counselor_status_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CounselorStatus"];
                 };
             };
         };

@@ -1,16 +1,18 @@
-# College Exploration Platform
+# Dream Campus
 
 Rank US universities by what a student says matters, using federal College Scorecard and
 IPEDS data, and show the reasons, tradeoffs, and data gaps behind every score.
 
 [![CI](https://github.com/codysj/College-Explorer/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/codysj/College-Explorer/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
 
 Next.js 15 · TypeScript · FastAPI · PostgreSQL 16 · Redis · Playwright · pytest · Docker · AWS SAM
 
 <img src="docs/media/search-ranked.png" alt="Search results ranked for a sample student, with fit scores, reasons, and tradeoffs" width="100%" />
 
 ## What it does
+
+- **Talks through college planning and essay revisions.** A consent-based, stateless counselor uses GPT-OSS on Groq, with read-only school tools and profile citations. Adapted from College Navigator; see NOTICE and the optional setup in docs/deployment.md.
 
 - **Ranks schools against a student's own priorities.** A short quiz captures major,
   budget, location, campus, and admissions strategy. A deterministic engine scores six
@@ -158,4 +160,4 @@ scope, and review are the author's.
 
 This is decision support, not admissions or financial advice.
 
-Released under the [MIT License](LICENSE).
+The combined Dream Campus application is released under [GNU AGPL-3.0](LICENSE). Original College Explorer MIT notices are preserved in [NOTICE](NOTICE) and [LICENSES/College-Explorer-MIT.txt](LICENSES/College-Explorer-MIT.txt).

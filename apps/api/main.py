@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 from starlette.requests import Request
 
+from api.routes.counselor import router as counselor_router
 from api.routes.health import router as health_router
 from api.routes.analytics import router as analytics_router
 from api.routes.cost_calculator import router as cost_calculator_router
@@ -53,8 +54,11 @@ def create_app() -> FastAPI:
         response = await call_next(request)
         for header, value in SECURITY_HEADERS.items():
             response.headers.setdefault(header, value)
+        if request.url.path.startswith("/counselor/"):
+            response.headers["Cache-Control"] = "no-store"
         return response
 
+    app.include_router(counselor_router)
     app.include_router(health_router)
     app.include_router(schools_router)
     app.include_router(rankings_router)

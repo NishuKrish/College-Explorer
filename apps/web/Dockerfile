@@ -13,6 +13,8 @@ ENV NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY apps/web ./
+COPY LICENSE NOTICE ./licenses/
+COPY LICENSES ./licenses/original/
 RUN npm run build
 
 FROM node:22-alpine AS runner
@@ -26,6 +28,7 @@ ENV NODE_ENV=production \
 COPY --from=builder --chown=node:node /app/.next/standalone ./
 COPY --from=builder --chown=node:node /app/.next/static ./.next/static
 COPY --from=builder --chown=node:node /app/public ./public
+COPY --from=builder --chown=node:node /app/licenses ./licenses
 
 USER node
 

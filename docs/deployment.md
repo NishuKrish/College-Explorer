@@ -266,3 +266,11 @@ The workspace currently uses a Railway trial. A paid plan will be needed when it
 trial allowance ends to keep services running. No paid plan, automatic database
 backup schedule, or spending alert was configured as part of this deployment.
 Saved schools/offers remain browser-local. Public deployment does not add accounts.
+
+## Optional Groq counselor
+
+Set API-service variables `COUNSELOR_ENABLED=true`, `GROQ_API_KEY` (secret), `COUNSELOR_MODEL=openai/gpt-oss-120b`, and optionally `COUNSELOR_DAILY_LIMIT=100`. The only other allowed model is `openai/gpt-oss-20b`. Never use a NEXT_PUBLIC secret. Redeploy the API after updating variables. Redis must be available: counselor usage limiting fails closed even when normal read endpoints can work without Redis. No migrations or model downloads are needed.
+
+The model runs on Groq's free plan, subject to account token/request limits and availability. Railway hosting remains separately billable. Each turn uses at most two model requests. The app additionally caps six requests/minute per hashed connection identity and 100 requests/day globally by default; no paid fallback. Status reports configuration only; verify a synthetic chat to test the actual provider. Account billing, retention and Zero Data Retention settings are managed in Groq. Rotate any key shared through chat and replace the Railway secret; do not commit credentials.
+
+Corresponding source and AGPL notices must remain available when hosting modifications of the adapted counselor. Docker images include license/attribution files. See NOTICE for upstream revision and preserved references.

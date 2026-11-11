@@ -331,3 +331,7 @@ V3.7 measured performance, now that retrieval is settled and Docker is running.
   - Browser search/save/compare/calculator/report flows and 390px mobile homepage verified.
   - Both production Docker images deployed and passed Railway healthchecks. PostgreSQL integration pytest suite was not run locally.
 - Validation: Python 3.12 backend suite: 117 passed, 7 database tests skipped; pip dependency check passed. Frontend ESLint passed with zero warnings using an isolated npm-ci installation. Next.js production build completed successfully before the image-component lint fix; final image change passed ESLint. Local runtime is Node 24; deployment Dockerfile pins Node 22.
+
+## Dream Campus counselor
+
+- [~] Adapt College Navigator interviews under AGPL-3.0; add stateless Groq GPT-OSS counselor, read-only school tools, essay/visit modes, source cards, consent, fail-closed usage limits and generated API contracts. Local backend tests pass; frontend and live deployment verification in progress.

@@ -217,3 +217,7 @@ GitHub Actions validates frontend lint/typecheck/build, Playwright smoke tests, 
 ## Not Implemented Yet
 
 Health, readiness, structured school search, school profile endpoints, deterministic ranking, Redis cache-aside, frontend foundation, onboarding, search UI, school profiles, browser-local saved schools, browser-local comparisons, Docker packaging, deployment documentation, CI validation, the V2.1 ingestion pipeline, V2.2 semantic retrieval, V2.3 similar-school discovery, V2.4 acceptance decision mode, V2.5 cost/value calculator, V2.6 sensitivity analysis, V2.7 shareable decision reports, and V2.8 analytics/ranking evaluation are implemented. Backend preference persistence, authenticated saved schools/comparisons, production-grade report sharing, public cloud deployment, production observability, and load-test reporting are not implemented yet.
+
+## Stateless college counselor
+
+`/counselor` keeps conversation state in React memory. The typed FastAPI route validates consent and input limits, applies Redis-backed usage counters, then invokes Groq with an adapted College Navigator interview prompt. A bounded service allows search, profile and deterministic ranking tools using existing repositories/services with null caches. Tools only read public school data. The final answer includes independent profile source cards. Essay mode never enables tools. No autonomous scheduling, writes, shell, browsing, saved student profiles or chat analytics are introduced. Source attribution and AGPL terms are in NOTICE/LICENSE.

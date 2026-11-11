@@ -16,6 +16,8 @@ COPY apps/api/requirements.txt apps/api/requirements.txt
 RUN python -m pip install --no-cache-dir --upgrade pip \
     && python -m pip install --no-cache-dir -r apps/api/requirements.txt
 
+COPY LICENSE NOTICE /app/licenses/
+COPY LICENSES /app/licenses/original/
 COPY apps/api apps/api
 COPY data/seed data/seed
 

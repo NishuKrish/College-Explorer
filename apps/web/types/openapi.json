@@ -529,6 +529,31 @@
         "title": "AnalyticsSummaryResponse",
         "type": "object"
       },
+      "ChatMessage": {
+        "additionalProperties": false,
+        "properties": {
+          "content": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Content",
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "user",
+              "assistant"
+            ],
+            "title": "Role",
+            "type": "string"
+          }
+        },
+        "required": [
+          "role",
+          "content"
+        ],
+        "title": "ChatMessage",
+        "type": "object"
+      },
       "CostCalculatorAssumption-Input": {
         "properties": {
           "annual_loan_amount": {
@@ -1009,6 +1034,139 @@
           "formulas"
         ],
         "title": "CostCalculatorSchoolResult",
+        "type": "object"
+      },
+      "CounselorRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "consent": {
+            "const": true,
+            "title": "Consent",
+            "type": "boolean"
+          },
+          "essay": {
+            "default": "",
+            "maxLength": 8000,
+            "title": "Essay",
+            "type": "string"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/ChatMessage"
+            },
+            "maxItems": 10,
+            "minItems": 1,
+            "title": "Messages",
+            "type": "array"
+          },
+          "mode": {
+            "default": "plan",
+            "enum": [
+              "plan",
+              "essay",
+              "visits"
+            ],
+            "title": "Mode",
+            "type": "string"
+          }
+        },
+        "required": [
+          "messages",
+          "consent"
+        ],
+        "title": "CounselorRequest",
+        "type": "object"
+      },
+      "CounselorResponse": {
+        "properties": {
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "reply": {
+            "title": "Reply",
+            "type": "string"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/CounselorSource"
+            },
+            "title": "Sources",
+            "type": "array"
+          },
+          "tools_used": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tools Used",
+            "type": "array"
+          }
+        },
+        "required": [
+          "reply",
+          "sources",
+          "tools_used",
+          "model"
+        ],
+        "title": "CounselorResponse",
+        "type": "object"
+      },
+      "CounselorSource": {
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "url",
+          "detail"
+        ],
+        "title": "CounselorSource",
+        "type": "object"
+      },
+      "CounselorStatus": {
+        "properties": {
+          "available": {
+            "title": "Available",
+            "type": "boolean"
+          },
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "provider": {
+            "default": "Groq",
+            "title": "Provider",
+            "type": "string"
+          },
+          "source_url": {
+            "default": "https://github.com/NishuKrish/College-Explorer",
+            "title": "Source Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "available",
+          "model",
+          "provider",
+          "source_url"
+        ],
+        "title": "CounselorStatus",
         "type": "object"
       },
       "DecisionCategoryScoreRow": {
@@ -4329,6 +4487,68 @@
         "summary": "Compare estimated college cost and directional value",
         "tags": [
           "cost-calculator"
+        ]
+      }
+    },
+    "/counselor/chat": {
+      "post": {
+        "operationId": "counselor_chat_counselor_chat_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CounselorRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounselorResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Counselor Chat",
+        "tags": [
+          "counselor"
+        ]
+      }
+    },
+    "/counselor/status": {
+      "get": {
+        "operationId": "counselor_status_counselor_status_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CounselorStatus"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Counselor Status",
+        "tags": [
+          "counselor"
         ]
       }
     },

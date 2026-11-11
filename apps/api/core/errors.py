@@ -33,7 +33,7 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException) 
 async def validation_exception_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
     logger.info(
         "validation_exception",
-        extra={"path": request.url.path, "errors": exc.errors()},
+        extra={"path": request.url.path, "errors": [{"type": error["type"]} for error in exc.errors()]},
     )
     return _error_response(
         status_code=HTTP_422_UNPROCESSABLE_CONTENT,

@@ -1,0 +1,22 @@
+Dream Campus
+
+This combined application is distributed under GNU AGPL-3.0. Corresponding source:
+https://github.com/NishuKrish/College-Explorer
+
+The original College Explorer code is Copyright (c) 2026 codysj and remains
+available under its original MIT terms, preserved in LICENSES/College-Explorer-MIT.txt.
+
+The counselor's interview and student-centered counseling instructions are adapted
+from College Navigator by chiv-heng (AGPL-3.0):
+https://github.com/chiv-heng/college-navigator-plugin
+Upstream revision: f3096952eb8412d643737f1fe8004f84d6ec96e0
+Unmodified upstream reference files are preserved in apps/api/counselor/reference/.
+
+Adaptation (2026-11-11): replaced CLI/multi-agent/file-based workflows with one
+stateless website counselor, bounded read-only college-data tools, optional essay
+feedback, explicit provider consent, and no student-profile persistence. Upstream
+claims about locally processed data, aid policies, numerical benchmarks and
+admissions predictions are not inherited by this hosted implementation.
+
+GPT-OSS is an open-weight model hosted separately by Groq. This application's license
+does not grant rights to provider services or waive their terms and usage limits.

@@ -961,3 +961,13 @@ Onboarding completion forwards only currently supported search filters to `/sear
 - Route handlers should call services or repositories rather than writing SQL directly.
 - Missing data should be represented explicitly instead of disguised as zero.
 - Ranking and generated prose remain separate: ranking fields must come from deterministic code.
+
+## AI counselor (optional)
+
+`GET /counselor/status` returns `{available, model, provider, source_url}`. Availability means configured, not a live provider health probe.
+
+`POST /counselor/chat` accepts `messages` (alternating user/assistant, first and last user; at most 10, 4,000 characters each, 12,000 total), `mode` (`plan`, `essay`, `visits`), optional `essay` (8,000 characters, essay mode only), and required `consent: true`. No system/tool roles or extra fields. Returns `{reply, sources: [{id,title,url,detail}], tools_used, model}`. Sources link to `/schools/{id}`. The client renders plain text, not HTML.
+
+At most two model requests and three allowlisted read-only school tools per turn. Essay mode has no tools. Ranking is delegated to the existing versioned deterministic service. AI summaries can still be wrong; they do not replace the structured ranking UI. No chat persistence, response caching or analytics; responses use `Cache-Control: no-store`.
+
+Errors use the standard error envelope: 422 invalid input or missing consent, 429 local/provider usage cap (Retry-After), 502 incomplete/provider failure, 503 disabled/misconfigured service, unavailable usage limiter or school data. No provider error bodies or student input are returned in errors. Six requests/minute per hashed connection identity and a global default 100 requests/UTC day; requests count even if later validation/provider calls fail.
