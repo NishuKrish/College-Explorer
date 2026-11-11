@@ -238,3 +238,31 @@ and the actual photo/font HTTP responses. Configure persistent-volume backups,
 restore procedures, and usage alerts in Railway before public launch. These have
 not been configured by committing the deployment files. Saved schools and offers
 remain browser-local; deployment does not introduce user accounts.
+
+
+### Verified Railway deployment
+
+- Project: https://railway.com/project/34afc48c-5609-478c-870f-807814d713f1
+- Source: https://github.com/NishuKrish/College-Explorer (main)
+- Frontend: https://web-production-6e40e160.up.railway.app
+- API: https://api-production-157aff17.up.railway.app
+- PostgreSQL: `pgvector/pgvector:pg16`, private network, persistent volume.
+- Redis: Railway Redis template, private network, persistent volume.
+
+Both app deployments passed healthchecks. The first API deployment ran every
+migration, seeded 92 schools, and refreshed their similarity embeddings. The API
+pre-deploy setting is now only `alembic upgrade head`. API deploys watch
+`/apps/api/**` and `/data/seed/**`; web deploys watch `/apps/web/**`.
+
+Live verification covered health/readiness, search, school profiles, similar
+schools, deterministic ranking, full-text search, cost calculations, sensitivity,
+decision reports, CORS and the disabled analytics summary. Browser verification
+covered real search results, saving, comparison, cost calculation and printable
+report generation. Hind and the UCLA image loaded. The mobile homepage was checked
+at 390px without horizontal overflow. The first browser calculator request had a
+transient connection failure; retry succeeded. No uptime or load claims are made.
+
+The workspace currently uses a Railway trial. A paid plan will be needed when its
+trial allowance ends to keep services running. No paid plan, automatic database
+backup schedule, or spending alert was configured as part of this deployment.
+Saved schools/offers remain browser-local. Public deployment does not add accounts.

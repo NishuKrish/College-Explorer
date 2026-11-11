@@ -324,5 +324,10 @@ V3.7 measured performance, now that retrieval is settled and Docker is running.
 - [x] Include public assets in the production web image (Hind fonts and UCLA photo).
 - [x] Document private database/Redis connections, initial seeding, CORS, and verification.
 - [ ] Verify container builds and PostgreSQL integration tests (Docker is unavailable on this host).
-- [ ] Connect owner GitHub and Railway accounts, publish source, provision services, and verify deployment.
+- [x] Connect owner GitHub and Railway accounts, publish source, provision services, and verify deployment.
+  - Live frontend: https://web-production-6e40e160.up.railway.app
+  - Live API: https://api-production-157aff17.up.railway.app
+  - API health/readiness, 92-school search, profiles, similarity, rankings, full-text search, cost calculator, sensitivity, reports, CORS and analytics gate verified.
+  - Browser search/save/compare/calculator/report flows and 390px mobile homepage verified.
+  - Both production Docker images deployed and passed Railway healthchecks. PostgreSQL integration pytest suite was not run locally.
 - Validation: Python 3.12 backend suite: 117 passed, 7 database tests skipped; pip dependency check passed. Frontend ESLint passed with zero warnings using an isolated npm-ci installation. Next.js production build completed successfully before the image-component lint fix; final image change passed ESLint. Local runtime is Node 24; deployment Dockerfile pins Node 22.
