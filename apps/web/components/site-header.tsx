@@ -1,50 +1,6 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-import { cn } from "@/lib/utils";
-
-// The journey in order: tell us what matters, explore, keep a shortlist, compare, decide.
-const links = [
-  { href: "/onboarding", label: "Preferences" },
-  { href: "/search", label: "Explore" },
-  { href: "/dashboard", label: "Saved" },
-  { href: "/compare", label: "Compare" },
-  { href: "/decision", label: "Decide" },
-] as const;
-
-export function SiteHeader() {
-  const pathname = usePathname();
-
-  return (
-    <header className="border-b border-border bg-white/80 backdrop-blur print:hidden">
-      <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-3 sm:px-8">
-        <Link className="text-sm font-semibold text-foreground" href="/">
-          College Exploration
-        </Link>
-        <nav aria-label="Main">
-          <ul className="flex flex-wrap gap-1">
-            {links.map(({ href, label }) => {
-              const active = pathname === href || pathname.startsWith(`${href}/`);
-              return (
-                <li key={href}>
-                  <Link
-                    aria-current={active ? "page" : undefined}
-                    className={cn(
-                      "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                      active ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground",
-                    )}
-                    href={href}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      </div>
-    </header>
-  );
-}
+import { ArrowUpRight, Compass } from "lucide-react";
+const links = [{href:"/search",label:"Explore schools"},{href:"/dashboard",label:"My shortlist"},{href:"/compare",label:"Compare"},{href:"/decision",label:"Decide"}];
+export function SiteHeader(){const pathname=usePathname();return <header className="guide-header print:hidden"><Link className="guide-brand" href="/" aria-label="College Exploration"><Compass size={31} strokeWidth={1.5}/><span>college<span className="brand-second">explorer<span className="brand-dot">.</span></span></span></Link><nav aria-label="Main"><ul>{links.map(({href,label})=><li key={href}><Link href={href} aria-current={pathname===href?"page":undefined}>{label}</Link></li>)}</ul></nav><Link className="header-start" href="/onboarding">Find your fit <ArrowUpRight size={16}/></Link></header>}

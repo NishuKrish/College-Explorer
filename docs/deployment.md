@@ -182,3 +182,57 @@ Deploys are manual (`sam deploy`, Vercel's Git integration). A CI deploy job wou
 - No custom domain; the API is served from the Lambda function URL hostname.
 - No production observability beyond CloudWatch logs (14-day retention).
 - No load testing or production latency baseline exists yet.
+
+## Railway (single-project deployment)
+
+The Railway configuration is prepared; no Railway deployment has been verified yet.
+Keep the repository root as the source root for both app services. Select the custom
+config file `/infra/railway/api.json` for the API and `/infra/railway/web.json` for
+Next.js in each service's settings. The Dockerfiles need the full repository context.
+
+Create four services in one region:
+
+- PostgreSQL 16 using a pgvector-enabled image (`pgvector/pgvector:pg16`), persistent
+  storage at `/var/lib/postgresql/data`, and strong database credentials. Configure
+  `POSTGRES_DB`, `POSTGRES_USER`, and `POSTGRES_PASSWORD`. Keep the database private.
+- Redis with persistent storage as appropriate; keep it private.
+- API built from this GitHub repository using the API config.
+- Web built from the same repository using the web config.
+
+API variables:
+
+- `APP_ENV=production`
+- `PORT=8000` (the existing Dockerfile listens on 8000)
+- `DATABASE_URL=postgresql+psycopg://USER:PASSWORD@PRIVATE_HOST:5432/DATABASE`;
+  construct with service references, not copied credentials. URL-encode credential
+  components if needed.
+- `REDIS_URL` referencing the Redis private URL, and `REDIS_ENABLED=true`.
+- `CORS_ORIGINS` set to the exact web HTTPS origin; no trailing slash or wildcard.
+- Leave `ANALYTICS_API_TOKEN` unset to keep the analytics summary closed.
+
+The API config runs `alembic upgrade head` before deployment. For the initial empty
+school database, temporarily select `/infra/railway/api-bootstrap.json` as the config file. It runs:
+
+```sh
+sh -c 'alembic upgrade head && python scripts/seed_database.py --if-empty && python scripts/refresh_embeddings.py'
+```
+
+After initialization succeeds, select `/infra/railway/api.json` again. Configuration
+files override dashboard command settings, so switch the config file rather than
+editing the command in the dashboard. Never use `--reset`
+on the deployed database. Generate an API domain targeting port 8000.
+
+Web variables:
+
+- `PORT=3000`
+- `NEXT_PUBLIC_API_BASE_URL=https://<generated-api-domain>`
+
+The API URL is a build argument; rebuild the web service after changing it. Generate
+the web domain targeting port 3000, then update the API CORS origin and redeploy it.
+The web image includes `public/` for the locally hosted Hind font and UCLA photo.
+
+Verify API `/health` and `/ready`, all key user journeys on desktop and mobile,
+and the actual photo/font HTTP responses. Configure persistent-volume backups,
+restore procedures, and usage alerts in Railway before public launch. These have
+not been configured by committing the deployment files. Saved schools and offers
+remain browser-local; deployment does not introduce user accounts.

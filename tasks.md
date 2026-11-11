@@ -317,3 +317,12 @@ Updated 2026-10-13. Ordered by dependency.
 ## Next Recommended Task
 
 V3.7 measured performance, now that retrieval is settled and Docker is running.
+
+## Railway deployment preparation
+
+- [x] Add separate Railway API/web configurations using the existing Dockerfiles and health endpoints.
+- [x] Include public assets in the production web image (Hind fonts and UCLA photo).
+- [x] Document private database/Redis connections, initial seeding, CORS, and verification.
+- [ ] Verify container builds and PostgreSQL integration tests (Docker is unavailable on this host).
+- [ ] Connect owner GitHub and Railway accounts, publish source, provision services, and verify deployment.
+- Validation: Python 3.12 backend suite: 117 passed, 7 database tests skipped; pip dependency check passed. Frontend ESLint passed with zero warnings using an isolated npm-ci installation. Next.js production build completed successfully before the image-component lint fix; final image change passed ESLint. Local runtime is Node 24; deployment Dockerfile pins Node 22.
