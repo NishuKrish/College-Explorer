@@ -338,7 +338,9 @@ V3.7 measured performance, now that retrieval is settled and Docker is running.
 
 ## Dream Campus planning tools
 
-- [~] Add shortlist-connected application checklists, student-entered dates, FullCalendar/agenda views and JSON export.
-- [~] Add Tiptap essay editor, word targets, optional per-school prompts/device saves, text downloads and jsdiff revision comparisons.
-- [~] Add searchable Leaflet campus map with shortlist filters, verified snapshot coordinates and explicit third-party map loading.
-- [~] Validate browser persistence, calendar navigation, draft controls, map loading and responsive layouts before Railway deployment.
+- [x] Add shortlist-connected application checklists, student-entered dates, FullCalendar/agenda views and JSON export.
+- [x] Add Tiptap essay editor, word targets, optional per-school prompts/device saves, text downloads and jsdiff revision comparisons.
+- [x] Add searchable Leaflet campus map with shortlist filters, verified snapshot coordinates and explicit third-party map loading.
+- [x] Validate browser persistence, calendar navigation, draft controls, map loading and responsive layouts before Railway deployment.
+
+- Verification: planner model checks, frontend lint/typecheck and Next.js 15.5.29 production build passed; runtime audit returned zero vulnerabilities. Live browser checks covered checklist/stage persistence, native date input saving, calendar-to-checklist navigation, Tiptap word count, jsdiff highlighting, explicit per-school draft save/load, map tile loading, UCLA alias/shortlist filters and marker selection. Planner/map layouts checked at 390px without document overflow. Added Playwright regression coverage; GitHub Actions has no runs in this fork, so no CI pass is claimed.

@@ -293,3 +293,5 @@ Run `npm run test:planner`, `npm run lint`, `npm run typecheck` and `npm run bui
 persistence after refresh, calendar event navigation, essay word count/comparison,
 explicit save/load/download behavior, and map filtering/loading. Next.js was updated
 within v15 to the patched 15.5.29 release after a runtime dependency audit.
+
+Planning tools deployed and verified on 2026-11-12. Native date inputs save on input/blur; the browser test confirmed both application and visit dates survived refresh and opened their checklist from the calendar. Essay comparison and per-school saved draft/prompt restoration passed. The campus map loaded OpenStreetMap tiles and selected the correct UCLA profile. Runtime audit reported zero vulnerabilities after the Next.js update. The fork has no GitHub Actions runs; automated Playwright cases are committed, with live workflows checked through the browser.

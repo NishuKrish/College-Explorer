@@ -97,3 +97,4 @@ body{background:radial-gradient(ellipse at 95% 5%,#daebfe75,transparent 52%),#ff
 @media(max-width:700px){.campus-photo{margin:0 10px 8px 0}.campus-photo img{height:290px}.guide-copy h1{font-size:56px}.guide-copy h1 em{text-decoration-thickness:5px}}
 @media(max-width:1000px){.guide-header nav ul{gap:17px}.guide-header nav a{font-size:12px}}
 @media(min-width:701px) and (max-width:850px){.guide-header{flex-wrap:wrap}.guide-header nav{order:3;width:100%}.guide-header nav ul{justify-content:space-between}.header-start{margin-left:auto}}
+@media(max-width:700px){.guide-header nav ul{flex-wrap:wrap;justify-content:flex-start;gap:10px 18px}.guide-header nav{overflow:visible}}
