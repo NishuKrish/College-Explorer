@@ -20,3 +20,13 @@ admissions predictions are not inherited by this hosted implementation.
 
 GPT-OSS is an open-weight model hosted separately by Groq. This application's license
 does not grant rights to provider services or waive their terms and usage limits.
+
+Planning and writing features (2026-11-12):
+- Tiptap editor: https://github.com/ueberdosis/tiptap (MIT core; no paid extensions).
+- FullCalendar: https://github.com/fullcalendar/fullcalendar (MIT standard packages).
+- jsdiff: https://github.com/kpdecker/jsdiff (BSD-3-Clause).
+- Leaflet: https://github.com/Leaflet/Leaflet (BSD-2-Clause).
+Copies of these notices are preserved in LICENSES/frontend/.
+The application checklist is our own Next.js implementation, inspired by the workflow
+in https://github.com/YuZh98/academic-application-tracker, not an embedded Streamlit app.
+Map tiles are provided separately by OpenStreetMap, with attribution on the map.

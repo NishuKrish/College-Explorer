@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import { defaultPlan, parsePlanner, validDate } from '../lib/application-planner.ts';
+const first = defaultPlan();const second = defaultPlan();first.tasks[0].done=true;
+assert.equal(second.tasks[0].done,false,'Each school needs an independent checklist');
+assert.equal(validDate('2028-02-29'),true);
+assert.equal(validDate('2027-02-29'),false);
+assert.equal(validDate('2026-13-01'),false);
+assert.deepEqual(parsePlanner('broken JSON'),{});
+assert.deepEqual(parsePlanner('{"__proto__":{}}'),{});
+assert.deepEqual(parsePlanner(JSON.stringify({'12':{...defaultPlan(),deadline:'2026-02-31'}})),{});
+const sample={...defaultPlan(),deadline:'2026-12-01',visitDate:'2026-11-20',stage:'Submitted'};
+assert.deepEqual(parsePlanner(JSON.stringify({'12':sample}))['12'],sample);
+const duplicate={...defaultPlan(),tasks:[{id:'1',label:'Essay',done:true},{id:'1',label:'Repeated',done:false},{id:'2',label:'Transcript',done:'not a boolean'}]};
+assert.equal(parsePlanner(JSON.stringify({'12':duplicate}))['12'].tasks.length,1);
+assert.deepEqual(parsePlanner(JSON.stringify({'12':{...sample,stage:'Invented'}})),{});
+console.log('Planner checks passed: date validation, isolated state, persistence roundtrip, malformed storage, task deduplication.');

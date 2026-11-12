@@ -1,0 +1,554 @@
+[
+  {
+    "unitid": 100751,
+    "name": "The University of Alabama",
+    "lat": 33.211875,
+    "lng": -87.545978
+  },
+  {
+    "unitid": 104151,
+    "name": "Arizona State University Campus Immersion",
+    "lat": 33.417721,
+    "lng": -111.934383
+  },
+  {
+    "unitid": 104179,
+    "name": "University of Arizona",
+    "lat": 32.232672,
+    "lng": -110.950815
+  },
+  {
+    "unitid": 104717,
+    "name": "Grand Canyon University",
+    "lat": 33.513231,
+    "lng": -112.129929
+  },
+  {
+    "unitid": 106397,
+    "name": "University of Arkansas",
+    "lat": 36.070009,
+    "lng": -94.176981
+  },
+  {
+    "unitid": 110404,
+    "name": "California Institute of Technology",
+    "lat": 34.137349,
+    "lng": -118.125878
+  },
+  {
+    "unitid": 110565,
+    "name": "California State University-Fullerton",
+    "lat": 33.881506,
+    "lng": -117.885446
+  },
+  {
+    "unitid": 110583,
+    "name": "California State University-Long Beach",
+    "lat": 33.782818,
+    "lng": -118.11204
+  },
+  {
+    "unitid": 110635,
+    "name": "University of California-Berkeley",
+    "lat": 37.871918,
+    "lng": -122.260463
+  },
+  {
+    "unitid": 110644,
+    "name": "University of California-Davis",
+    "lat": 38.539667,
+    "lng": -121.749567
+  },
+  {
+    "unitid": 110653,
+    "name": "University of California-Irvine",
+    "lat": 33.648434,
+    "lng": -117.841248
+  },
+  {
+    "unitid": 110662,
+    "name": "University of California-Los Angeles",
+    "lat": 34.07178,
+    "lng": -118.442179
+  },
+  {
+    "unitid": 110680,
+    "name": "University of California-San Diego",
+    "lat": 32.877749,
+    "lng": -117.235866
+  },
+  {
+    "unitid": 110705,
+    "name": "University of California-Santa Barbara",
+    "lat": 34.416297,
+    "lng": -119.846426
+  },
+  {
+    "unitid": 122409,
+    "name": "San Diego State University",
+    "lat": 32.77525,
+    "lng": -117.071228
+  },
+  {
+    "unitid": 123961,
+    "name": "University of Southern California",
+    "lat": 34.021281,
+    "lng": -118.284169
+  },
+  {
+    "unitid": 126614,
+    "name": "University of Colorado Boulder",
+    "lat": 40.008781,
+    "lng": -105.270823
+  },
+  {
+    "unitid": 129242,
+    "name": "Fairfield University",
+    "lat": 41.157673,
+    "lng": -73.255903
+  },
+  {
+    "unitid": 130794,
+    "name": "Yale University",
+    "lat": 41.311158,
+    "lng": -72.926688
+  },
+  {
+    "unitid": 131496,
+    "name": "Georgetown University",
+    "lat": 38.908809,
+    "lng": -77.073463
+  },
+  {
+    "unitid": 132903,
+    "name": "University of Central Florida",
+    "lat": 28.602159,
+    "lng": -81.200889
+  },
+  {
+    "unitid": 133650,
+    "name": "Florida Agricultural and Mechanical University",
+    "lat": 30.428504,
+    "lng": -84.290226
+  },
+  {
+    "unitid": 133951,
+    "name": "Florida International University",
+    "lat": 25.75732,
+    "lng": -80.373928
+  },
+  {
+    "unitid": 134097,
+    "name": "Florida State University",
+    "lat": 30.443147,
+    "lng": -84.295064
+  },
+  {
+    "unitid": 134130,
+    "name": "University of Florida",
+    "lat": 29.64629,
+    "lng": -82.347911
+  },
+  {
+    "unitid": 135726,
+    "name": "University of Miami",
+    "lat": 25.72126,
+    "lng": -80.278662
+  },
+  {
+    "unitid": 137351,
+    "name": "University of South Florida",
+    "lat": 28.061458,
+    "lng": -82.413232
+  },
+  {
+    "unitid": 139658,
+    "name": "Emory University",
+    "lat": 33.790183,
+    "lng": -84.325512
+  },
+  {
+    "unitid": 139755,
+    "name": "Georgia Institute of Technology-Main Campus",
+    "lat": 33.77242,
+    "lng": -84.394832
+  },
+  {
+    "unitid": 139959,
+    "name": "University of Georgia",
+    "lat": 33.956262,
+    "lng": -83.374039
+  },
+  {
+    "unitid": 144050,
+    "name": "University of Chicago",
+    "lat": 41.787994,
+    "lng": -87.599539
+  },
+  {
+    "unitid": 145637,
+    "name": "University of Illinois Urbana-Champaign",
+    "lat": 40.104718,
+    "lng": -88.229114
+  },
+  {
+    "unitid": 147767,
+    "name": "Northwestern University",
+    "lat": 42.050356,
+    "lng": -87.679858
+  },
+  {
+    "unitid": 151351,
+    "name": "Indiana University-Bloomington",
+    "lat": 39.16609,
+    "lng": -86.526559
+  },
+  {
+    "unitid": 152080,
+    "name": "University of Notre Dame",
+    "lat": 41.703058,
+    "lng": -86.238959
+  },
+  {
+    "unitid": 159391,
+    "name": "Louisiana State University and Agricultural & Mechanical College",
+    "lat": 30.414986,
+    "lng": -91.178921
+  },
+  {
+    "unitid": 160621,
+    "name": "Southern University and A & M College",
+    "lat": 30.524558,
+    "lng": -91.190105
+  },
+  {
+    "unitid": 160755,
+    "name": "Tulane University of Louisiana",
+    "lat": 29.940069,
+    "lng": -90.122144
+  },
+  {
+    "unitid": 162928,
+    "name": "Johns Hopkins University",
+    "lat": 39.328977,
+    "lng": -76.621595
+  },
+  {
+    "unitid": 163286,
+    "name": "University of Maryland-College Park",
+    "lat": 38.988178,
+    "lng": -76.944721
+  },
+  {
+    "unitid": 164924,
+    "name": "Boston College",
+    "lat": 42.336213,
+    "lng": -71.169242
+  },
+  {
+    "unitid": 164988,
+    "name": "Boston University",
+    "lat": 42.351118,
+    "lng": -71.107942
+  },
+  {
+    "unitid": 166027,
+    "name": "Harvard University",
+    "lat": 42.374471,
+    "lng": -71.118313
+  },
+  {
+    "unitid": 166683,
+    "name": "Massachusetts Institute of Technology",
+    "lat": 42.359243,
+    "lng": -71.093226
+  },
+  {
+    "unitid": 167358,
+    "name": "Northeastern University",
+    "lat": 42.339992,
+    "lng": -71.088782
+  },
+  {
+    "unitid": 168148,
+    "name": "Tufts University",
+    "lat": 42.40855,
+    "lng": -71.118293
+  },
+  {
+    "unitid": 170976,
+    "name": "University of Michigan-Ann Arbor",
+    "lat": 42.278374,
+    "lng": -83.73481
+  },
+  {
+    "unitid": 171100,
+    "name": "Michigan State University",
+    "lat": 42.73212,
+    "lng": -84.476111
+  },
+  {
+    "unitid": 174066,
+    "name": "University of Minnesota-Twin Cities",
+    "lat": 44.972851,
+    "lng": -93.235464
+  },
+  {
+    "unitid": 176053,
+    "name": "Mississippi Christian University",
+    "lat": 32.335515,
+    "lng": -90.329821
+  },
+  {
+    "unitid": 179867,
+    "name": "Washington University in St Louis",
+    "lat": 38.647929,
+    "lng": -90.310604
+  },
+  {
+    "unitid": 182670,
+    "name": "Dartmouth College",
+    "lat": 43.704115,
+    "lng": -72.289949
+  },
+  {
+    "unitid": 186131,
+    "name": "Princeton University",
+    "lat": 40.348732,
+    "lng": -74.659365
+  },
+  {
+    "unitid": 186380,
+    "name": "Rutgers University-New Brunswick",
+    "lat": 40.498769,
+    "lng": -74.446251
+  },
+  {
+    "unitid": 190150,
+    "name": "Columbia University in the City of New York",
+    "lat": 40.808286,
+    "lng": -73.961885
+  },
+  {
+    "unitid": 190415,
+    "name": "Cornell University",
+    "lat": 42.4472,
+    "lng": -76.483084
+  },
+  {
+    "unitid": 193900,
+    "name": "New York University",
+    "lat": 40.729452,
+    "lng": -73.997264
+  },
+  {
+    "unitid": 198419,
+    "name": "Duke University",
+    "lat": 36.001135,
+    "lng": -78.937624
+  },
+  {
+    "unitid": 199120,
+    "name": "University of North Carolina at Chapel Hill",
+    "lat": 35.911769,
+    "lng": -79.050969
+  },
+  {
+    "unitid": 199847,
+    "name": "Wake Forest University",
+    "lat": 36.133609,
+    "lng": -80.277446
+  },
+  {
+    "unitid": 201885,
+    "name": "University of Cincinnati-Main Campus",
+    "lat": 39.131159,
+    "lng": -84.51428
+  },
+  {
+    "unitid": 204796,
+    "name": "Ohio State University-Main Campus",
+    "lat": 39.999803,
+    "lng": -83.007525
+  },
+  {
+    "unitid": 209542,
+    "name": "Oregon State University",
+    "lat": 44.56395,
+    "lng": -123.274723
+  },
+  {
+    "unitid": 211440,
+    "name": "Carnegie Mellon University",
+    "lat": 40.44357,
+    "lng": -79.941993
+  },
+  {
+    "unitid": 213543,
+    "name": "Lehigh University",
+    "lat": 40.606822,
+    "lng": -75.380236
+  },
+  {
+    "unitid": 214777,
+    "name": "Pennsylvania State University-Main Campus",
+    "lat": 40.7965,
+    "lng": -77.862848
+  },
+  {
+    "unitid": 215062,
+    "name": "University of Pennsylvania",
+    "lat": 39.950929,
+    "lng": -75.19391
+  },
+  {
+    "unitid": 216597,
+    "name": "Villanova University",
+    "lat": 40.036463,
+    "lng": -75.340502
+  },
+  {
+    "unitid": 217156,
+    "name": "Brown University",
+    "lat": 41.82617,
+    "lng": -71.40385
+  },
+  {
+    "unitid": 218663,
+    "name": "University of South Carolina-Columbia",
+    "lat": 33.996788,
+    "lng": -81.026935
+  },
+  {
+    "unitid": 221759,
+    "name": "The University of Tennessee-Knoxville",
+    "lat": 35.952082,
+    "lng": -83.925852
+  },
+  {
+    "unitid": 221999,
+    "name": "Vanderbilt University",
+    "lat": 36.14659,
+    "lng": -86.803369
+  },
+  {
+    "unitid": 225511,
+    "name": "University of Houston",
+    "lat": 29.720393,
+    "lng": -95.343537
+  },
+  {
+    "unitid": 227216,
+    "name": "University of North Texas",
+    "lat": 33.211178,
+    "lng": -97.148422
+  },
+  {
+    "unitid": 227368,
+    "name": "The University of Texas Rio Grande Valley",
+    "lat": 26.306759,
+    "lng": -98.173567
+  },
+  {
+    "unitid": 227757,
+    "name": "Rice University",
+    "lat": 29.717897,
+    "lng": -95.402035
+  },
+  {
+    "unitid": 228459,
+    "name": "Texas State University",
+    "lat": 29.888885,
+    "lng": -97.943029
+  },
+  {
+    "unitid": 228723,
+    "name": "Texas A&M University-College Station",
+    "lat": 30.618726,
+    "lng": -96.336475
+  },
+  {
+    "unitid": 228769,
+    "name": "The University of Texas at Arlington",
+    "lat": 32.729718,
+    "lng": -97.11296
+  },
+  {
+    "unitid": 228778,
+    "name": "The University of Texas at Austin",
+    "lat": 30.282825,
+    "lng": -97.738273
+  },
+  {
+    "unitid": 229027,
+    "name": "The University of Texas at San Antonio",
+    "lat": 29.583709,
+    "lng": -98.620657
+  },
+  {
+    "unitid": 229115,
+    "name": "Texas Tech University",
+    "lat": 33.583448,
+    "lng": -101.874783
+  },
+  {
+    "unitid": 230038,
+    "name": "Brigham Young University",
+    "lat": 40.250851,
+    "lng": -111.649281
+  },
+  {
+    "unitid": 231624,
+    "name": "William & Mary",
+    "lat": 37.269489,
+    "lng": -76.708214
+  },
+  {
+    "unitid": 232557,
+    "name": "Liberty University",
+    "lat": 37.350232,
+    "lng": -79.18222
+  },
+  {
+    "unitid": 233921,
+    "name": "Virginia Polytechnic Institute and State University",
+    "lat": 37.229012,
+    "lng": -80.423675
+  },
+  {
+    "unitid": 234076,
+    "name": "University of Virginia-Main Campus",
+    "lat": 38.035665,
+    "lng": -78.503428
+  },
+  {
+    "unitid": 236948,
+    "name": "University of Washington-Seattle Campus",
+    "lat": 47.65538,
+    "lng": -122.30514
+  },
+  {
+    "unitid": 240444,
+    "name": "University of Wisconsin-Madison",
+    "lat": 43.075409,
+    "lng": -89.404098
+  },
+  {
+    "unitid": 243744,
+    "name": "Stanford University",
+    "lat": 37.429434,
+    "lng": -122.167359
+  },
+  {
+    "unitid": 243780,
+    "name": "Purdue University-Main Campus",
+    "lat": 40.428206,
+    "lng": -86.914435
+  },
+  {
+    "unitid": 486840,
+    "name": "Kennesaw State University",
+    "lat": 34.038807,
+    "lng": -84.583052
+  }
+]

@@ -46,7 +46,7 @@ export function SavedSchoolsDashboard() {
             Saved schools
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
-            Organize your local shortlist by decision status and stage schools for comparison.
+            Organize your shortlist, compare schools, and plan your applications.
           </p>
         </div>
         <div className="rounded-lg border border-border bg-white p-4 shadow-soft">
@@ -54,6 +54,8 @@ export function SavedSchoolsDashboard() {
           <p className="mt-1 text-xs text-muted-foreground">
             Stored in this browser until account persistence is added.
           </p>
+          <Link className="mt-3 block text-sm font-semibold text-primary" href="/planner">Application checklist & calendar ↗</Link>
+          <Link className="mt-2 block text-sm font-semibold text-primary" href="/campuses">Explore campuses on a map ↗</Link>
           <Button asChild className="mt-3 w-full" variant="secondary">
             <Link href="/decision">
               <ListChecks className="h-4 w-4" aria-hidden="true" />

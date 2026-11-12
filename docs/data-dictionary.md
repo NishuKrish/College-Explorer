@@ -271,3 +271,13 @@ fetcher reads is listed in one `REQUESTED_FIELDS` constant.
 - V2.1 includes small public-data-style fixtures for pipeline tests, not full official datasets.
 - User, preference, saved-school, comparison, and decision tables are structural placeholders until full authenticated account persistence and privacy controls are implemented. Event analytics are implemented for V2.8 local/demo evaluation, but production retention, consent, access control, and deletion workflows belong to V3.
 - Full official College Scorecard/IPEDS snapshot operations, similar-school discovery, and data freshness UI belong to later tasks.
+
+## Campus map coordinate bundle
+
+`apps/web/data/campus-coordinates.json` contains only `unitid`, `name`, `lat`, `lng`
+from the existing `data/seed/schools_seed.csv` snapshot (latitude/longitude). No new
+school facts or external geocoding are introduced. The UI joins by exact school name
+to the current search API's school IDs; missing coordinates are omitted from the map
+and counted in the page note. Run `python apps/web/scripts/generate-campus-coordinates.py`
+from the repo root after changing the seed snapshot. The bundle is public data, not a
+record of student locations.

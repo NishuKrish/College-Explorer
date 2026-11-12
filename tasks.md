@@ -335,3 +335,10 @@ V3.7 measured performance, now that retrieval is settled and Docker is running.
 ## Dream Campus counselor
 
 - [x] Adapt College Navigator interviews under AGPL-3.0; add stateless Groq GPT-OSS counselor, read-only school tools, essay/visit modes, source cards, consent, fail-closed usage limits and generated API contracts. Verified 134 backend tests (7 database tests skipped locally), frontend lint/typecheck/production build, live Groq school-source and synthetic essay responses, Railway healthchecks, and 390px layout without overflow. AI reliability remains a documented limitation.
+
+## Dream Campus planning tools
+
+- [~] Add shortlist-connected application checklists, student-entered dates, FullCalendar/agenda views and JSON export.
+- [~] Add Tiptap essay editor, word targets, optional per-school prompts/device saves, text downloads and jsdiff revision comparisons.
+- [~] Add searchable Leaflet campus map with shortlist filters, verified snapshot coordinates and explicit third-party map loading.
+- [~] Validate browser persistence, calendar navigation, draft controls, map loading and responsive layouts before Railway deployment.

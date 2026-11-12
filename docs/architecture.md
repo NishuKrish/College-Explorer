@@ -221,3 +221,29 @@ Health, readiness, structured school search, school profile endpoints, determini
 ## Stateless college counselor
 
 `/counselor` keeps conversation state in React memory. The typed FastAPI route validates consent and input limits, applies Redis-backed usage counters, then invokes Groq with an adapted College Navigator interview prompt. A bounded service allows search, profile and deterministic ranking tools using existing repositories/services with null caches. Tools only read public school data. The final answer includes independent profile source cards. Essay mode never enables tools. No autonomous scheduling, writes, shell, browsing, saved student profiles or chat analytics are introduced. Source attribution and AGPL terms are in NOTICE/LICENSE.
+
+## Browser-local planning and writing tools
+
+`/planner` joins the existing saved-school IDs with a separate typed application plan:
+stage, student-entered deadline/visit date, and up to 25 checklist tasks. Validated
+localStorage state has the `dream-campus.application-planner.v1` key. Removed schools
+are hidden without deleting their plans. FullCalendar renders the same dates; calendar
+and agenda clicks open the relevant checklist. JSON export gives students a readable
+backup (there is no import or account sync). Application stages are distinct from
+shortlist/decision statuses.
+
+`/counselor` essay mode uses Tiptap's MIT editor and jsdiff for comparisons between a
+captured text and the current student draft. State is temporary unless the student
+explicitly saves a plain-text draft on the device, keyed by general statement or saved
+school ID. Students can load, delete the saved copy, download text, set a word target,
+and supply their own prompt. Current draft and prompt are sent through the existing
+consent-gated chat endpoint; comparison baselines and unrelated saved drafts are not.
+New chat/mode changes reset temporary essay state, not explicitly saved device copies.
+
+`/campuses` fetches the existing paginated school search contract. Public coordinates
+from `data/seed/schools_seed.csv` are bundled in `apps/web/data/campus-coordinates.json`
+and joined by exact school name, avoiding assumptions about database-generated IDs.
+Leaflet is loaded only when the student chooses to load the interactive map; its
+OpenStreetMap tile requests come from the browser. The school list and shortlist
+controls remain usable without tiles. No routing, live visit availability or travel
+time estimates are claimed.

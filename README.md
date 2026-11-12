@@ -12,6 +12,9 @@ Next.js 15 · TypeScript · FastAPI · PostgreSQL 16 · Redis · Playwright · p
 
 ## What it does
 
+- **Plans applications and campus visits.** Browser-local checklists and a deadline calendar connect to saved colleges; a campus map helps explore locations.
+- **Provides an essay writing desk.** Edit drafts, count words, compare revisions, and optionally save a plain-text copy on your device before requesting counselor feedback.
+
 - **Talks through college planning and essay revisions.** A consent-based, stateless counselor uses GPT-OSS on Groq, with read-only school tools and profile citations. Adapted from College Navigator; see NOTICE and the optional setup in docs/deployment.md.
 
 - **Ranks schools against a student's own priorities.** A short quiz captures major,

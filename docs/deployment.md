@@ -276,3 +276,20 @@ The model runs on Groq's free plan, subject to account token/request limits and 
 Corresponding source and AGPL notices must remain available when hosting modifications of the adapted counselor. Docker images include license/attribution files. See NOTICE for upstream revision and preserved references.
 
 Counselor verified live on 2026-11-11: Groq GPT-OSS returned UCLA snapshot net price with a school-profile source and responded to a synthetic essay with no school-tool calls. Browser consent, mode selection and essay submission were exercised. Both API and web passed Railway healthchecks. A college-name punctuation/alias fallback was added after the first live test missed UCLA. These are smoke checks, not a comprehensive model-quality evaluation.
+
+## Planning tools and campus map
+
+The planning/writing/map features need no additional backend service, paid API key,
+model, database migration or environment variable. Standard open-source Tiptap,
+FullCalendar, jsdiff and Leaflet packages are included by the web Docker build.
+Public campus coordinates are bundled from the existing seed snapshot. OpenStreetMap
+tiles load directly from the student's browser only after Load interactive map;
+retain visible attribution and observe the tile provider's usage policy. High-traffic
+map deployments should select a suitable tile provider instead of assuming unlimited
+public tile capacity. Application deadlines are student-entered, not scraped or AI-generated.
+
+Run `npm run test:planner`, `npm run lint`, `npm run typecheck` and `npm run build` in
+`apps/web`. Browser smoke checks should cover shortlist-to-planner flow, task/date
+persistence after refresh, calendar event navigation, essay word count/comparison,
+explicit save/load/download behavior, and map filtering/loading. Next.js was updated
+within v15 to the patched 15.5.29 release after a runtime dependency audit.

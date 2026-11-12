@@ -5,6 +5,8 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ArrowUp, BookOpen, Compass, MapPin, PenLine, RotateCcw } from "lucide-react";
 import { apiFetch } from "@/lib/api-client";
 import type { components } from "@/types/api.gen";
+import dynamic from "next/dynamic";
+const EssayWorkspace = dynamic(() => import("@/components/essay/essay-workspace").then(module => module.EssayWorkspace), { ssr: false, loading: () => <p role="status">Opening your writing desk…</p> });
 import "./counselor.css";
 
 type Response = components["schemas"]["CounselorResponse"];
@@ -30,6 +32,8 @@ export function Counselor() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [essay, setEssay] = useState("");
+  const [essayContext, setEssayContext] = useState("");
+  const [essaySession, setEssaySession] = useState(0);
   const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<Status | null>(null);
   const [busy, setBusy] = useState(false);
@@ -45,11 +49,12 @@ export function Counselor() {
   useEffect(() => { end.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, [messages, busy]);
   function reset(next = mode) {
     controller.current?.abort(); controller.current = null;
-    setMode(next); setMessages([]); setInput(""); setEssay(""); setError(""); setBusy(false);
+    setMode(next); setMessages([]); setInput(""); setEssay(""); setEssayContext(""); setEssaySession(current => current + 1); setError(""); setBusy(false);
   }
   async function send(event: FormEvent) {
     event.preventDefault();
-    const content = input.trim();
+    const content = [mode === "essay" ? essayContext : "", input.trim()].filter(Boolean).join("\n\n");
+    if (content.length > 4000) { setError("Shorten your question or essay prompt to send this message."); return; }
     if (!content || !consent || busy || !status?.available) return;
     const next: Message[] = [...messages, { role: "user", content }];
     if (next.length > 9 || next.reduce((sum, m) => sum + m.content.length, 0) > 12000) {
@@ -81,7 +86,7 @@ export function Counselor() {
           {busy && <p className="counselor-thinking" role="status">Thinking it through<span>…</span></p>}<div ref={end}/>
         </div>
         <form className="counselor-compose" onSubmit={send}>
-          {mode === "essay" && <details className="counselor-draft" open={!messages.length}><summary>Your essay draft <span>{essay.length.toLocaleString()} / 8,000 characters</span></summary><textarea aria-label="Essay draft" maxLength={8000} value={essay} onChange={e => setEssay(e.target.value)} placeholder="Paste a draft without your name or identifying details." disabled={busy}/></details>}
+          {mode === "essay" && <EssayWorkspace key={essaySession} value={essay} onChange={setEssay} onContextChange={setEssayContext} disabled={busy}/>}
           {status && !status.available && <p role="status" className="counselor-error">The counselor is not connected yet. <Link href="/search">Explore schools</Link> while we get ready.</p>}
           {error && <p className="counselor-error" role="alert">{error}</p>}
           <div className="counselor-input-wrap"><textarea aria-label="Message your counselor" placeholder={mode === "essay" ? "What would you like feedback on?" : "What’s on your mind?"} value={input} maxLength={4000} onChange={e => setInput(e.target.value)} disabled={busy}/><button type="submit" aria-label="Send message" disabled={!input.trim() || !consent || busy || !status?.available}><ArrowUp size={22}/></button></div>
